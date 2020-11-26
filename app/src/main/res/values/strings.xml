@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ExamenPMDM</string>
+    <string name="pulsar">Pulsar</string>
+    <string name="duplicar_vocales">DUPLICAR VOCALES</string>
+    <string name="invertir_orden">INVERTIR ORDEN</string>
+    <string name="reemplazar_vocal">REEMPLAZAR VOCAL</string>
+</resources>
