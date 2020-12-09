@@ -22,54 +22,50 @@ class SecondActivity  : AppCompatActivity(){
         val boton3 = findViewById<Button>(R.id.boton3Act2)
         val editText = findViewById<EditText>(R.id.editText2)
 
-        if(!editText.text.equals('a') || !editText.text.equals('e') || !editText.text.equals('i') || !editText.text.equals('o') || !editText.text.equals('u')){
-            println("No válido. Escribe una vocal")
-            editText.text = null
-        }
-        //Guardamos en una lista las palabras del otro Main
-        val palabra = mutableListOf<String>(intent.getStringExtra(VAR).toString())
-        for(i in palabra) {
-            //Imprimimos en el TextView la lista de palabra con salto de linea entre cada una
-            textView.text = ("$i \n")
+        val texto = intent.getStringExtra("Hola")
+
+        texto?.let {
+            textView.text = it.replace(",", "\n")
         }
 
-        boton.setOnClickListener{
-            //Recorre la lista de palabras
-            for(i in palabra) {
-                //Recorre cada letra de cada palabra
-                for(j in i) {
-                    textView.text = ("$j")
-                    if (j == 'a' || j == 'e' || j =='i' || j=='o' || j=='u')
-                        //Si la letra es una vocal la pinta otra vez
-                        textView.text = ("$j")
+        //Duplicar vocales
+        boton.setOnClickListener {
+            texto?.let { text: String ->
+                val salida = text
+                val vocales = listOf("a", "e", "i", "o", "u")
+                vocales.forEach {
+                    salida.replace(it, it + it)
                 }
-                textView.text = ("\n")
+                textView.text = salida
             }
         }
 
-        boton2.setOnClickListener{
-            var i=3
-             repeat(palabra.size){
-                 textView.text = palabra[it+i]
-                 if(i>0) {
-                     i -= 2
-                 }else
-                     i=0
-             }
+        //Invertir orden
+        boton2.setOnClickListener {
+            texto?.let { text: String ->
+                val lista = text.split(",")
+                val listaInvertida = lista.reversed()
+                var salida = ""
+                listaInvertida.forEach {
+                    salida += it + "\n"
+                }
+                textView.text = salida
+            }
         }
 
-        boton3.setOnClickListener{
-            for (i in palabra){
-                for(j in i){
-                    //Si la letra escrita en el edittext es igual a la letra de la palabra sustituye esa letra por un smile
-                    if (editText.text.equals(j))     {
-                        textView.text = ("🙂")
-                    }else
-                         textView.text = ("$j")
+        //Reemplazar vocal por emoji
+        boton3.setOnClickListener {
+            texto?.let { text: String ->
+                val remplazo = text.replace(editText.text.toString(), "🙂")
+                val lista = remplazo.split(",")
+                var salida = ""
+                lista.forEach {
+                    if (it.contains("🙂")) {
+                        salida += it + "\n"
+                    }
                 }
-                 textView.text = ("\n")
+                textView.text = salida
             }
-
         }
     }
 

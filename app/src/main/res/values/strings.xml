@@ -4,4 +4,5 @@
     <string name="duplicar_vocales">DUPLICAR VOCALES</string>
     <string name="invertir_orden">INVERTIR ORDEN</string>
     <string name="reemplazar_vocal">REEMPLAZAR VOCAL</string>
+    <string name="introduce_una_letra">Introduce una letra</string>
 </resources>
