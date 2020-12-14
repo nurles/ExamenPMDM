@@ -18,6 +18,7 @@
         android:layout_marginTop="120dp"
         android:inputType="text"
         android:maxLength="1"
+        android:digits="aeiouAEIOU"
         android:hint="@string/introduce_una_letra"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>

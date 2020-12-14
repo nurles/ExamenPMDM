@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
                 s?.let {
-                    if(s.split(",").size >= 4) {
+                    if (s.split(",").size >= 4) {
                         boton.isEnabled = it.split(",").size >= 4
                     }
                 }

@@ -11,6 +11,7 @@ class SecondActivity  : AppCompatActivity(){
     companion object{
         const val VAR = "palabra"
     }
+    val vocales = listOf("a", "e", "i", "o", "u")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +23,7 @@ class SecondActivity  : AppCompatActivity(){
         val boton3 = findViewById<Button>(R.id.boton3Act2)
         val editText = findViewById<EditText>(R.id.editText2)
 
-        val texto = intent.getStringExtra("Hola")
+        val texto = intent.getStringExtra(VAR)
 
         texto?.let {
             textView.text = it.replace(",", "\n")
@@ -31,10 +32,9 @@ class SecondActivity  : AppCompatActivity(){
         //Duplicar vocales
         boton.setOnClickListener {
             texto?.let { text: String ->
-                val salida = text
-                val vocales = listOf("a", "e", "i", "o", "u")
+                var salida = text
                 vocales.forEach {
-                    salida.replace(it, it + it)
+                    salida = salida.replace(it, it + it, true)
                 }
                 textView.text = salida
             }
@@ -43,7 +43,7 @@ class SecondActivity  : AppCompatActivity(){
         //Invertir orden
         boton2.setOnClickListener {
             texto?.let { text: String ->
-                val lista = text.split(",")
+                val lista = text.toList()
                 val listaInvertida = lista.reversed()
                 var salida = ""
                 listaInvertida.forEach {
